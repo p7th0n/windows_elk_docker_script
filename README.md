@@ -14,8 +14,32 @@ $HOST_IP = "192.168.1.67"               # change to the Docker host computer's I
 ```
 
 * **docker run -p** maps container ports to the host's _localhost_ interface.
+
+```powershell
+
+    docker run --name elk -p 127.0.0.1:5044:5044 -p 127.0.0.1:5601:5601 -p 127.0.0.1:9200:9200 sebp/elk 
+
+```
+
 * **netsh interface portproxy add v4tov4** maps _localhost_ ports to the external network interface that the Hyper-V VMs can access.
+
+```powershell
+
+netsh interface portproxy add v4tov4 listenport=5044 listenaddress=$HOST_IP connectaddress=localhost connectport=5044
+netsh interface portproxy add v4tov4 listenport=5601 listenaddress=$HOST_IP connectaddress=localhost connectport=5601
+netsh interface portproxy add v4tov4 listenport=9200 listenaddress=$HOST_IP connectaddress=localhost connectport=9200
+
+```
+
 * **New-NetFirewallRule** creates Windows Inbound Firewall rules.
+
+```powershell
+
+New-NetFirewallRule -DisplayName "ELK / Docker Logstash" -Direction Inbound -LocalPort 5044 -Protocol TCP -Action Allow
+New-NetFirewallRule -DisplayName "ELK / Docker Kibana" -Direction Inbound -LocalPort 5601 -Protocol TCP -Action Allow
+New-NetFirewallRule -DisplayName "ELK / Docker ElasticSearch" -Direction Inbound -LocalPort 9200 -Protocol TCP -Action Allow
+
+```
 
 ## Resources
 
