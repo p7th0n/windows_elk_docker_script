@@ -1,6 +1,6 @@
 # Start ELK Docker Container on Windows
 
-[Elastic.co](https://www.elastic.co/) provides a handy Docker image for the _ELK_ stack ([**E**lasticsearch](https://www.elastic.co/products/elasticsearch) [**L**ogstash](https://www.elastic.co/products/logstash) [**Kibana**](https://www.elastic.co/products/kibana)). The Docker image gets you up and running an ELK system fast.  This script is a quick hack to use the ELK image with other development VMs running with Vagrant and Hyper-V.
+[Elastic.co](https://www.elastic.co/) provides a handy Docker image for the _ELK_ stack ([**E**lasticsearch](https://www.elastic.co/products/elasticsearch) [**L**ogstash](https://www.elastic.co/products/logstash) [**K**ibana](https://www.elastic.co/products/kibana)). The Docker image gets you up and running an ELK system fast.  This script is a quick hack to use the ELK image with other development VMs running with Vagrant and Hyper-V.
 
 ## Usage
 
